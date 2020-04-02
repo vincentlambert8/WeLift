@@ -1,1 +1,0 @@
-create table utilisateurs (id char(36), email varchar(254) NOT NULL, password char(32) NOT NULL, first_name varchar(50), last_name varchar(50), gender enum('male', 'female', 'other'), birthdate char(10), country varchar(50), phone varchar(25), PRIMARY KEY (id)); 
