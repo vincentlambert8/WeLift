@@ -13,6 +13,7 @@ def get_db(app):
     app.config['MYSQL_DB'] = db['mysql_db']
 
     mysql = MySQL(app)
+    return mysql
    
 
     
