@@ -1,7 +1,35 @@
-<form method="POST" action="">
-    Name <input type="text" name="name" />
-    <br>
-    Email <input type="email" name="email" />
-    <br>
-    <input type="submit" >
-</form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+
+    {% include 'navBar.html' %}
+
+    <div>
+        <h1>BONJOUR</h1>
+    </div>
+
+    <br><br><br>
+
+    <form action="/createtrip">
+        <input type="submit" value="Create a trip" />
+    </form>
+
+    <br><br><br>
+
+    <form action="/searchlift">
+        <input type="submit" value="Search a lift" />
+    </form>
+
+    <br><br><br>
+
+    <form action="/users">
+        <input type="submit" value="Account info" />
+    </form>
+
+
+
+</body>
+</html>
