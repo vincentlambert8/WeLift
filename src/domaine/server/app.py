@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, render_template
 from flask_mysqldb import MySQL
-from domaine.server.__init__db import get_db
-from domaine.server.routes import router
+from __init__db import get_db
+from routes import router
 import os
 
 app = Flask(__name__)
