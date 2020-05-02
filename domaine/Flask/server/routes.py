@@ -1,5 +1,7 @@
 from flask import render_template
 
+
+
 @app.route('/login')
 def login():
         return render_template('login.html')
@@ -13,6 +15,9 @@ def register():
 @app.route('/index')
 def index():
         return render_template('index.html')
+
+
+#------------------------------------------------------------------------------------------------------------
 
 @app.route('/searchlift')
 def searchlift():
