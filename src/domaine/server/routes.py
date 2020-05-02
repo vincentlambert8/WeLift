@@ -1,58 +1,59 @@
-from flask import render_template
-from register import registerUser
+from flask import render_template, Blueprint
+import os
 
+templates_dir = os.path.abspath('../../presentation/templates')
+router = Blueprint('router', __name__, template_folder=templates_dir)
 
-
-@app.route('/login')
+@router.route('/login')
 def login():
         return render_template('login.html')
 
-@app.route('/register', methods=('GET', 'POST'))
+@router.route('/register', methods=('GET', 'POST'))
 def register():
         return registerUser
 
 #------------------------------------------------------------------------------------------------------------
 
-@app.route('/index')
+@router.route('/index')
 def index():
         return render_template('index.html')
 
 
 #------------------------------------------------------------------------------------------------------------
 
-@app.route('/searchlift')
+@router.route('/searchlift')
 def searchlift():
         return render_template('searchlift.html')
         
-@app.route('/payment')
+@router.route('/payment')
 def payment():
         return render_template('payment.html')
 
 #------------------------------------------------------------------------------------------------------------
 
-@app.route('/createtrip')
+@router.route('/createtrip')
 def createtrip():
         return render_template('createtrip.html')
 
-@app.route('/choosecar')
+@router.route('/choosecar')
 def choosecar():
         return render_template('choosecar.html')
 
-@app.route('/confirmtrip')
+@router.route('/confirmtrip')
 def confirmtrip():
         return render_template('confirmtrip.html')
 
 #-------------------------------------------------------------------------------------------------------------
 
-@app.route('/pickupinfo')
+@router.route('/pickupinfo')
 def pickupinfo():
         return render_template('pickupinfo.html')
 
-@app.route('/review')
+@router.route('/review')
 def review():
         return render_template('review.html')
         
-@app.route('/logout')
+@router.route('/logout')
 def logout():
         return render_template('logout.html')
 
