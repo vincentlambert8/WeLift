@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\domaine",
+    "\\domaine\\Flask",
+    "\\domaine\\Flask\\server",
+    "\\presentation",
+    "\\presentation\\templates"
+  ],
+  "SelectedNode": "\\domaine\\Flask\\server\\__init__db.py",
+  "PreviewInSolutionExplorer": false
+}

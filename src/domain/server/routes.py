@@ -14,7 +14,7 @@ def login():
 
 @router.route('/register', methods=('GET', 'POST'))
 def register():
-        return registerUser
+        pass
 
 #------------------------------------------------------------------------------------------------------------
 

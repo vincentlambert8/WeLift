@@ -10,3 +10,4 @@ app.register_blueprint(router)
 if __name__ == '__main__':
     mysql = get_db(app)
     app.run(debug=True)
+    
