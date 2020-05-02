@@ -4,6 +4,13 @@ import os
 templates_dir = os.path.abspath('../../presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
 
+
+@router.route('/logo')
+def logo():
+
+        return rende_template("assets/logo2.png", logo_img)
+
+
 @router.route('/')
 def home():
         return render_template("home.html")
