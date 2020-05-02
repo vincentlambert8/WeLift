@@ -12,9 +12,9 @@ def home():
 def login():
         return render_template('login.html')
 
-@router.route('/register', methods=('GET', 'POST'))
+@router.route('/register')
 def register():
-        pass
+        return render_template('register.html')
 
 #------------------------------------------------------------------------------------------------------------
 
