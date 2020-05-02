@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a trip</title>
+</head>
+<body>
+
+<h2>Create your trip</h2>
+
+<form>
+    <label for="departure">Departure:</label><br>
+    <input type="text" id="departure" name="departure" ><br><br>
+
+    <label for="destination">Destination:</label><br>
+    <input type="text" id="destination" name="destination" ><br><br>
+
+    <label for="date">Date:</label><br>
+    <input type="datetime" id="date" name="date" ><br><br>
+
+    <label for="distance">Distance km (optional):</label><br>
+    <input type="number" id="distance" name="distance" ><br><br>
+
+    <label for="capacity">Car capacity:</label><br>
+    <input type="number" id="capacity" name="capacity" ><br><br>
+
+    <p>Will there be stopovers?</p>
+    <input type="radio" id="yes" name="stopover" value="yes">
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="stopover" value="no">
+    <label for="no">No</label><br>
+    <input type="radio" id="other" name="stopover" value="other">
+    <label for="other">Maybe</label>
+    <br><br>
+
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" name="price" ><br>
+
+    <p>Negociable?</p>
+    <input type="radio" id="yes" name="price" value="yes">
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="price" value="no">
+    <label for="no">No</label><br>
+
+    <br><br><br>
+
+
+    <input type="submit" value="Create trip">
+
+</form> 
+
+
+</body>
+</html>
