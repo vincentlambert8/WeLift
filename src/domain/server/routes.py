@@ -11,6 +11,7 @@ def logo():
         return rende_template("assets/logo2.png", logo_img)
 
 
+@router.route('/home')
 @router.route('/')
 def home():
         return render_template("home.html")
