@@ -4,23 +4,28 @@ import os
 templates_dir = os.path.abspath('../../presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
 
-@router.route('/')
+@router.route('/home')
 def home():
-        return render_template("home.html")
+        return render_template("/home.html")
 
 @router.route('/login')
 def login():
-        return render_template('login.html')
+        return render_template('/login.html')
 
 @router.route('/register')
 def register():
-        return render_template('register.html')
+        return render_template('/register.html')
 
 #------------------------------------------------------------------------------------------------------------
 
 @router.route('/index')
 def index():
-        return render_template('index.html')
+        return render_template('/index.html')
+
+@router.route('/users')
+def users():
+        return render_template('/users.html')
+
 
 
 #------------------------------------------------------------------------------------------------------------
