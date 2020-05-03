@@ -24,7 +24,7 @@ def createtrip():
     if request.form['stopover'] == "yes":
         stopover = 1
     elif request.form['stopover'] == "no":
-        stopvoer = 0
+        stopover = 0
     elif request.form['stopover'] == "other":
         stopover = 2
 

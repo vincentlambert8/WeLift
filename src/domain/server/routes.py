@@ -51,9 +51,9 @@ def users():
 def searchlift():
     return render_template('searchlift.html')
         
-@router.route('/payment')
+@router.route('/paymentTrip')
 def payment():
-    return render_template('payment.html')
+    return render_template('paymentTrip.html')
 
 #------------------------------------------------------------------------------------------------------------
 
