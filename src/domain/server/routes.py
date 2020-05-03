@@ -43,9 +43,14 @@ def register():
             balance = 0.0
 
             try:
-                command = "INSERT INTO Users VALUES (NULL, '{}', MD5('{}'), '{}', '{}', '{}', '{}', '{}', '{}', {});".format(email, password, firstName, lastName, gender, birthday, country, phone, balance)
-                cur.execute(command)
-                conn.commit()
+                validation = "SELECT * FROM users WHERE email = '{}'".format(email)
+                responseValidation = cur.execute(validation)
+                if responseValidation > 0:
+                    print("This email is already use")
+                else:
+                    command = "INSERT INTO Users VALUES (NULL, '{}', MD5('{}'), '{}', '{}', '{}', '{}', '{}', '{}', {});".format(email, password, firstName, lastName, gender, birthday, country, phone, balance)
+                    cur.execute(command)
+                    conn.commit()
             except Exception as e:
                 print(e)
 
