@@ -3,9 +3,7 @@ import os
 import bcrypt
 import pymysql, pymysql.cursors
 import yaml
-
-templates_dir = os.path.abspath('../../presentation/templates')
-auth = Blueprint('auth', __name__, template_folder=templates_dir)
+from domain.server.connection_db import get_db
 
 
 @auth.route('/register', methods=(['POST']))
@@ -40,3 +38,8 @@ def register_auth():
         cur.close()
         conn.close()
         return redirect('login')
+
+
+@auth.route('/login', methods=(['POST']))
+def login_auth():
+    pass

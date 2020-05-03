@@ -1,17 +1,15 @@
 from flask import render_template, request, Blueprint, redirect
 import os
-import bcrypt
 import pymysql, pymysql.cursors
 import yaml
 
-templates_dir = os.path.abspath('../../presentation/templates')
+templates_dir = os.path.abspath('presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
 
 
 @router.route('/logo')
 def logo():
         return render_template("assets/logo2.png", logo_img)
-
 
 @router.route('/home')
 @router.route('/')
@@ -22,9 +20,9 @@ def home():
 def login():
         return render_template('login.html')
 
-@router.route('/register', methods=(['GET']))
+@router.route('/register')
 def register():
-        return render_template('register.html')
+        return render_template('/register.html')
 
 #------------------------------------------------------------------------------------------------------------
 
