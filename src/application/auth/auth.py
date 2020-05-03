@@ -14,7 +14,6 @@ def register_auth():
     conn = get_db()
     cur = conn.cursor()
 
-    auth = False
     email = request.form['email']
     password = request.form['password']
     firstName = request.form['fname']
