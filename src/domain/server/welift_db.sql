@@ -8,9 +8,9 @@ DROP TABLE IF EXISTS Historique;
 DROP TABLE IF EXISTS Transactions;
 DROP TABLE IF EXISTS Comments;
 
-CREATE TABLE Users(id int AUTO_INCREMENT, email varchar(254) NOT NULL, password varchar(32) NOT NULL, first_name varchar(50) NOT NULL, last_name varchar(50) NOT NULL, gender enum('Male', 'Female', 'Other') NOT NULL, birthdate char(10), country varchar(50), phone varchar(25) NOT NULL, balance float, primary key (id));
+CREATE TABLE Users(id int AUTO_INCREMENT, email varchar(254) NOT NULL, password varchar(254) NOT NULL, first_name varchar(50) NOT NULL, last_name varchar(50) NOT NULL, gender enum('Male', 'Female', 'Other') NOT NULL, birthdate char(10), country varchar(50), phone varchar(25) NOT NULL, balance float, primary key (id));
 CREATE INDEX emailIndex USING HASH ON Users(email);
-INSERT INTO Users VALUES (NULL, "jeecee@artemis.com", "jeecee123", "jee", "cee", 'Male', "1999-02-23", "Canada", "123-456-7890", 250);
+INSERT INTO Users VALUES (NULL, "jeecee@artemis.com", "jeecee", "jee", "cee", 'Male', "1999-02-23", "Canada", "123-456-7890", 250);
 
 CREATE TABLE Trips(id int AUTO_INCREMENT, date timestamp NOT NULL, departure varchar(50) NOT NULL, destination varchar(50) NOT NULL, distance float, capacity integer NOT NULL, stopover integer, id_driver int, id_passengers varchar(2592), primary key (id), foreign key (id_driver) references Users(id));
 CREATE INDEX tripIndex USING HASH ON Trips(departure, destination);

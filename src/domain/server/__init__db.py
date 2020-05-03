@@ -5,7 +5,7 @@ import yaml
 
 def get_db(app):
     
-    db = yaml.load(open('db.yaml'))
+    db = yaml.load(open('db.yaml'), Loader=yaml.FullLoader)
 
     app.config['MYSQL_HOST'] = db['mysql_host']
     app.config['MYSQL_USER'] = db['mysql_user']
