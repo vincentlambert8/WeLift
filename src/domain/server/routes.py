@@ -61,7 +61,7 @@ def payment():
 def createtrip():
     return render_template('createtrip.html')
 
-@router.route('/choosecar')
+@router.route('/choosecar', methods=(['GET']))
 def choosecar():
     return render_template('choosecar.html')
 
