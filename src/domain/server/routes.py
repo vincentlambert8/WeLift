@@ -1,5 +1,6 @@
-from flask import render_template, Blueprint
+from flask import render_template, request, Blueprint, redirect
 import os
+import bcrypt
 
 templates_dir = os.path.abspath('../../presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
@@ -20,9 +21,26 @@ def home():
 def login():
         return render_template('login.html')
 
-@router.route('/register')
+@router.route('/register', methods=('GET', 'POST'))
 def register():
-        return render_template('register.html')
+        if request.method == 'GET':
+            return render_template('register.html')
+        else:
+            email = request.form['email']
+            password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            firstName = request.form['fname']
+            lastName = request.form['lname']
+            gender = request.form['gender']
+            birthday = request.form['birthday']
+            country = request.form['country']
+            phone = request.form['phone']
+            balance = 0.0
+            #cur = mysql.connection.cursor()
+            #cur.execute("INSERT INTO users \
+            #(id, email, password, first_name, last_name, gender, birthdate, country, phone, balance) \
+            # VALUES(NULL, %s, %s, %s, %s, %s, %s, %s, %s, %f)",\
+             # (thwart(email), thwart(password), thwart(firstName), gender, birthday, thwart(country), thwart(phone), balance))
+            return redirect('login')
 
 #------------------------------------------------------------------------------------------------------------
 
