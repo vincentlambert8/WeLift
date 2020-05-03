@@ -7,6 +7,12 @@
 <body>
 {% include 'navBar.html' %}
 
+{% if session['fname'] %}
+<p>You login as {{session['fname']}}</p>
+{% else %}
+<p>Not logged in yet</p>
+{% endif %} 
+
 
 </body>
 </html>

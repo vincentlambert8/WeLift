@@ -5,5 +5,7 @@
     <a href="home">
         <img width="200px" src="{{ url_for('static', filename='images/logo1.png') }}"/>
     </a>
-    <a href="logout">Logout</a>
+    <form action="/logout" method="GET">
+        <input type="submit" value="Logout">
+    </form>
 </div>
