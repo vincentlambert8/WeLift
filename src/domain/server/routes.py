@@ -20,7 +20,7 @@ def home():
 def login():
         return render_template('login.html')
 
-@router.route('/register')
+@router.route('/register', methods=(['GET']))
 def register():
         return render_template('/register.html')
 

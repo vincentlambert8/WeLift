@@ -25,4 +25,3 @@ CREATE TABLE Transactions(id int AUTO_INCREMENT, id_transmitter int, id_recipien
 
 CREATE TABLE Comments(id int AUTO_INCREMENT, message varchar(300), score float, id_transmitter int, id_recipient int, primary key (id));
 CREATE INDEX idIndex USING HASH ON Comments(id_transmitter, id_recipient);
- 
