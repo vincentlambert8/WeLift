@@ -24,30 +24,28 @@ def register_auth():
     phone = request.form['phone']
     balance = 0.0
 
-    try:
-        validation = "SELECT U.email FROM users U WHERE U.email = '{}'".format(email)
-        responseValidation = cur.execute(validation)
-        if responseValidation > 0:
-            print("This email is already use")
-            cur.close()
-            conn.close()
-            return render_template('register.html')
 
-        else:
-            command = "INSERT INTO Users VALUES (NULL, '{}', MD5('{}'), '{}', '{}', '{}', '{}', '{}', '{}', {});".format(email, password, firstName, lastName, gender, birthday, country, phone, balance)
-            cur.execute(command)
-            conn.commit()
-            session['fname'] = firstName
-            session['email'] = email
-            #session['user_id'] = 
-            cur.close()
-            conn.close()
-            return redirect('home')
+    validation = "SELECT U.email FROM users U WHERE U.email = '{}'".format(email)
+    responseValidation = cur.execute(validation)
+    if responseValidation > 0:
+        print("This email is already use")
+        cur.close()
+        conn.close()
+        return render_template('register.html')
 
-    
-    except Exception as e:
-        print(e)
-        return "error"
+    else:
+        command = "INSERT INTO Users VALUES (NULL, '{}', MD5('{}'), '{}', '{}', '{}', '{}', '{}', '{}', {});".format(email, password, firstName, lastName, gender, birthday, country, phone, balance)
+        cur.execute(command)
+        conn.commit()
+        commandId = "SELECT u.id FROM users u WHERE u.email = '{}'".format(email)
+        cur.execute(commandId)
+        id = cur.fetchone()
+        session['ID'] = id[0]
+        cur.close()
+        conn.close()
+        return redirect('home')
+
+
 
  
 
@@ -60,34 +58,22 @@ def login_auth():
     email = request.form['email']
     password = request.form['password']
 
-    try:
-        userLoginValidation = "SELECT * FROM users U WHERE U.email = '{}' AND U.password = MD5('{}')".format(email, password)
-        responseLoginValidation = cur.execute(userLoginValidation)
-        if responseLoginValidation == 0:
-            print("This account doesn't exist")
-        else:
-            nameQuery = "SELECT U.first_name FROM users U WHERE U.email = '{}'".format(email)
-            name = cur.execute(nameQuery)
-            firstName = cur.fetchone()
-            session['email'] = email
-            session['fname'] = firstName[0]
-            auth = True
 
-    except Exception as e:
-        print(e)
-
-    finally:
-        cur.close()
-        conn.close()
+    userLoginValidation = "SELECT * FROM users U WHERE U.email = '{}' AND U.password = MD5('{}')".format(email, password)
+    responseLoginValidation = cur.execute(userLoginValidation)
+    if responseLoginValidation == 0:
+        print("This account doesn't exist")
+    else:
+        commandId = "SELECT u.id FROM users u WHERE u.email = '{}'".format(email)
+        cur.execute(commandId)
+        id = cur.fetchone()
+        session['ID'] = id[0]
+    auth = True
+    cur.close()
+    conn.close()
 
     if(auth == True):
         return redirect('home')
     else:
         return render_template('login.html')
-
-
-
-@auth.route('/logout', methods=(['GET']))
-def logout_auth():
-    session.pop('fname', None)
 
