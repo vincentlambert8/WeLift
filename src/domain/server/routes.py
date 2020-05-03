@@ -1,6 +1,8 @@
 from flask import render_template, request, Blueprint, redirect
 import os
 import bcrypt
+import pymysql, pymysql.cursors
+import yaml
 
 templates_dir = os.path.abspath('../../presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
@@ -8,8 +10,7 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 
 @router.route('/logo')
 def logo():
-
-        return rende_template("assets/logo2.png", logo_img)
+        return render_template("assets/logo2.png", logo_img)
 
 
 @router.route('/home')
@@ -26,6 +27,10 @@ def register():
         if request.method == 'GET':
             return render_template('register.html')
         else:
+            db_config = yaml.load(open('db.yaml'))
+            conn = pymysql.connect(host=db_config['mysql_host'], user=db_config['mysql_user'], password=db_config['mysql_password'], db=db_config['mysql_db'])
+            cur = conn.cursor()
+
             email = request.form['email']
             password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             firstName = request.form['fname']
@@ -35,11 +40,17 @@ def register():
             country = request.form['country']
             phone = request.form['phone']
             balance = 0.0
-            #cur = mysql.connection.cursor()
-            #cur.execute("INSERT INTO users \
-            #(id, email, password, first_name, last_name, gender, birthdate, country, phone, balance) \
-            # VALUES(NULL, %s, %s, %s, %s, %s, %s, %s, %s, %f)",\
-             # (thwart(email), thwart(password), thwart(firstName), gender, birthday, thwart(country), thwart(phone), balance))
+
+            try:
+                command = "INSERT INTO Users VALUES (NULL, '{}', 'jeeceee', '{}', '{}', '{}', '{}', '{}', '{}', {});".format(email, firstName, lastName, gender, birthday, country, phone, balance)
+                #command = "INSERT INTO Users VALUES (NULL, 'jeecee@artemis.com', 'jeecee123', 'jee', 'cee', 'Male', '1999-02-23', 'Canada', '123-456-7890', 250);"
+                cur.execute(command)
+                conn.commit()
+            except Exception as e:
+                print(e)
+
+            cur.close()
+            conn.close()
             return redirect('login')
 
 #------------------------------------------------------------------------------------------------------------
