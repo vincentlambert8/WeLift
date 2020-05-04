@@ -3,24 +3,21 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navBar_style.css') }}"/>
 </head>
 <div>
-
-    <a>
-        <img width="200px" src="{{ url_for('static', filename='images/logo1.png') }}"/>
-    </a>
-    {% if session['ID'] %}
-        <a href="logout">
-            Logout
-        </a>
-        <a href="users">
-            Profile
-        </a>
-    {% else %}
-        <a href="login">
-            login
-        </a>
-        <a href="register">
-            register
-        </a>
-    {% endif %}
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="home">WeLift.</a>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                {% if session['ID'] %}
+                <a class="nav-item nav-link" href="searchlift">Search</a>
+                <a class="nav-item nav-link" href="createtrip">Create</a>
+                <a class="nav-item nav-link" href="users">Profile</a>
+                <a class="nav-item nav-link" href="logout">Logout</a>
+                {% else %}
+                <a class="nav-item nav-link" href="login">Login</a>
+                <a class="nav-item nav-link" href="register">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
 
 </div>
