@@ -41,7 +41,7 @@ def register_auth():
         session['ID'] = id[0]
         cur.close()
         conn.close()
-        return redirect('index')
+        return redirect('home')
 
 
 
@@ -71,7 +71,7 @@ def login_auth():
     conn.close()
 
     if(auth == True):
-        return redirect('index')
+        return redirect('home')
     else:
         return render_template('login.html')
 

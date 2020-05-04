@@ -2,6 +2,7 @@ from flask import render_template, request, Blueprint, redirect, session
 import os
 import pymysql, pymysql.cursors
 import yaml
+import unidecode
 from domain.server.connection_db import get_db
 
 templates_dir = os.path.abspath('presentation/templates')
@@ -12,8 +13,8 @@ def createtrip():
     conn = get_db()
     cur = conn.cursor()
 
-    departure = request.form['departure']
-    destination = request.form['destination']
+    departure = unidecode.unidecode(request.form['departure']).lower()
+    destination = unidecode.unidecode(request.form['destination']).lower()
     date = request.form['date']
     distance = request.form['distance']
     capacity = request.form['capacity']

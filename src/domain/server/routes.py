@@ -29,18 +29,6 @@ def register():
 
 #------------------------------------------------------------------------------------------------------------
 
-@router.route('/index')
-def index():
-    if(session.get('ID', None) is not None):
-        conn = get_db()
-        cur = conn.cursor()
-        command = "SELECT first_name FROM users where id = '{}'".format(session["ID"])
-        cur.execute(command)
-        bienvenue = cur.fetchone()[0]
-        return render_template("index.html", bienvenue=bienvenue)
-    else:
-        return redirect('home')
-
 @router.route('/users')
 def users():
     if(session.get('ID', None) is not None):
