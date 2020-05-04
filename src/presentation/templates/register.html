@@ -12,6 +12,16 @@
             <h1>Welcome!</h1>
             <h3>Please register.</h3>
 
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="alert-warning alert">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
             <div class="row mt-4">
                 <div class="col-6">
                     <label>First name</label>

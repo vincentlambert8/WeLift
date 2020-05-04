@@ -16,7 +16,7 @@ def home():
     command = "SELECT * FROM trips ORDER BY date"
     cur.execute(command)
     trips = cur.fetchall()
-    return render_template('home.html', trips=trips)
+    return render_template('home.html', trips=trips[:18])
 
 
 @router.route('/login')

@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, redirect, session
+from flask import render_template, request, Blueprint, redirect, session, flash
 import os
 import pymysql, pymysql.cursors
 import yaml
@@ -26,7 +26,7 @@ def register_auth():
     validation = "SELECT U.email FROM users U WHERE U.email = '{}'".format(email)
     responseValidation = cur.execute(validation)
     if responseValidation > 0:
-        print("This email is already use")
+        flash("This email is already use")
         cur.close()
         conn.close()
         return render_template('register.html')
@@ -60,13 +60,13 @@ def login_auth():
     userLoginValidation = "SELECT * FROM users U WHERE U.email = '{}' AND U.password = MD5('{}')".format(email, password)
     responseLoginValidation = cur.execute(userLoginValidation)
     if responseLoginValidation == 0:
-        print("This account doesn't exist")
+        flash("Enter a valid account")
     else:
         commandId = "SELECT u.id FROM users u WHERE u.email = '{}'".format(email)
         cur.execute(commandId)
         id = cur.fetchone()
         session['ID'] = id[0]
-    auth = True
+        auth = True
     cur.close()
     conn.close()
 
@@ -74,4 +74,3 @@ def login_auth():
         return redirect('home')
     else:
         return render_template('login.html')
-

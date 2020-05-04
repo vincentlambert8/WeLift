@@ -42,10 +42,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         {% set img = "../../static/images/%s.jpg" | format(trip[3]) %}
-                        <img class="card-img-top" src={{img}} alt={{ trip[3] }}>
-                        {% else %}
-                        <img class="card-img-top" src="../../static/images/welift.jpg" alt="Welift">
-                        {% endif %}
+                        <img class="card-img-top" src={{img}} onerror="this.src='../../static/images/welift.jpg'" style="max-height: 198px" alt={{ trip[3] }}>
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
