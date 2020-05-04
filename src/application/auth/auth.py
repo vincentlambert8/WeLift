@@ -22,10 +22,12 @@ def register_auth():
     phone = request.form['phone']
     balance = 0.0
 
-
     validation = "SELECT U.email FROM users U WHERE U.email = '{}'".format(email)
     responseValidation = cur.execute(validation)
-    if responseValidation > 0:
+
+    if(validateEmpty(request.form)):
+        return render_template('register.html')
+    elif(responseValidation > 0):
         flash("This email is already use")
         cur.close()
         conn.close()
@@ -43,9 +45,6 @@ def register_auth():
         conn.close()
         return redirect('home')
 
-
-
- 
 
 @auth.route('/login', methods=(['POST']))
 def login_auth():
@@ -74,3 +73,21 @@ def login_auth():
         return redirect('home')
     else:
         return render_template('login.html')
+
+
+def validateEmpty(form):
+    if(form['email'] == ""):
+        flash("The email can't be empty")
+    elif(form['password'] == ""):
+        flash("The password can't be empty")
+    elif(form['fname'] == "" or form['lname'] == ""):
+        flash("The name can't be empty")
+    elif(form['birthday'] == ""):
+        flash("The birthday is invalid")
+    elif(form['country'] == ""):
+        flash("The country can't be empty")
+    elif(form['phone'] == ""):
+        flash("The phone can't be empty")
+    else:
+        return False
+    return True
