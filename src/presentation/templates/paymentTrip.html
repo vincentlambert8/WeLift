@@ -17,8 +17,10 @@
     <label for="stopovers">Stopovers:</label><br><br>
     <label for="driverName">Driver's name:</label><br><br>
 
-    <label for="reviews">Reviews</label><br><br>
-
+    <label for="reviews">Reviews :</label><br><br>
+        {% for review in reviews %}
+            {{ review[1] }}
+        {% endfor %}
     <h2>Car informations</h2> 
 
     <label for="license">License plate:</label><br><br>

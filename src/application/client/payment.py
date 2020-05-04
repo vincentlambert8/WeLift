@@ -21,7 +21,7 @@ def payment(id):
         commandDriverReviews = "SELECT * FROM comments WHERE id_driver = {}".format(currentTrip[7])
 
         cur.execute(commandDriverReviews)
-        reviews = cur.fetchone()
+        reviews = cur.fetchall()
 
 
         return render_template('paymentTrip.html', currentTrip=currentTrip, reviews=reviews)
