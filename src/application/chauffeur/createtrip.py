@@ -28,14 +28,14 @@ def createtrip():
         stopover = 2
 
 
-    #id = id du user de la session
 
-
-    command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', NULL, NULL, {});".format(date, departure, destination, distance, capacity, stopover, price)
+    command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', '{}', NULL, '{}', NULL)".format(date, departure, destination, distance, capacity, stopover, session['ID'], price)
     cur.execute(command)
+    tripId = conn.insert_id()
     conn.commit()
+
     cur.close()
     conn.close()
-    return redirect('choosecar')
+    return redirect("choosecar/{}".format(tripId))
 
 
