@@ -35,13 +35,12 @@
 {% for trajet in trajets %}
 <div style="border: 1px solid;">
     <tr>
-        <td> {{trajet[0]}} </td>
         <td> {{trajet[1]}} </td>
         <td> {{trajet[2]}} </td>
         <td> {{trajet[3]}} </td>
         <td> {{trajet[4]}} </td>
         <td> {{trajet[5]}} </td>
-        <td> <form action="/paymentTrip"><button >Book this trip</button></form></td>
+        <td> <form action="/paymentTrip/{{ trajet[0] }}"><button >Book this trip</button></form></td>
     </tr>
 
 </div>

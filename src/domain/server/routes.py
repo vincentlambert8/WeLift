@@ -58,13 +58,7 @@ def searchlift():
     else:
         return redirect('home')
 
-        
-@router.route('/paymentTrip')
-def payment():
-    if(session.get('ID', None) is not None):
-        return render_template('paymentTrip.html')
-    else:
-        return redirect('home')
+
 
 #------------------------------------------------------------------------------------------------------------
 

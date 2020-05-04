@@ -4,6 +4,7 @@ from application.auth.auth import auth
 from application.chauffeur.createtrip import trip
 from application.chauffeur.choosecar import car
 from application.client.searchlift import search
+from application.client.payment import chooseTrip
 import os
 import bcrypt
 
@@ -13,6 +14,7 @@ app.register_blueprint(auth)
 app.register_blueprint(trip)
 app.register_blueprint(car)
 app.register_blueprint(search)
+app.register_blueprint(chooseTrip)
  
 if __name__ == '__main__':
     app.secret_key = "_0123jcyoukvince!"
