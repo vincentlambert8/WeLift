@@ -3,18 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>WeLift</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
 </head>
 <body>
 {% include 'navBar.html' %}
-<!--
-{% for trip in trips %}
-<div>
-    <h2>
-        {{ trip[0] }}
-    </h2>
-</div>
-{% endfor %}
--->
 
 <main role="main">
 
@@ -24,11 +16,11 @@
             <p class="lead text-muted">Climb aboard the newest carpooling network! Here are some available trips.</p>
             <p>
                 {% if session['ID'] %}
-                <a href="#" class="btn btn-primary my-2">Search more lifts</a>
-                <a href="#" class="btn btn-secondary my-2">Create lift</a>
+                <a href="searchlift" class="btn btn-primary my-2">Search more lifts</a>
+                <a href="createtrip" class="btn btn-secondary my-2">Create lift</a>
                 {% else %}
-                <a href="#" class="btn btn-primary my-2 disabled">Search more lifts</a>
-                <a href="#" class="btn btn-secondary my-2 disabled">Create lift</a>
+                <a href="searchlift" class="btn btn-primary my-2 disabled">Search more lifts</a>
+                <a href="createtrip" class="btn btn-secondary my-2 disabled">Create lift</a>
                 {% endif %}
             </p>
         </div>
@@ -44,7 +36,27 @@
                         {% set img = "../../static/images/%s.jpg" | format(trip[3]) %}
                         <img class="card-img-top" src={{img}} onerror="this.src='../../static/images/welift.jpg'" style="max-height: 198px" alt={{ trip[3] }}>
                         <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text">
+                            <p>
+                                <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                                </svg>
+                                Departure: {{ trip[2] }}
+                            </p>
+                            <p>
+                                <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                                </svg>
+                                Destination: {{ trip[3] }}
+                            </p>
+                            <p>
+                                <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M14 0H2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd" d="M6.5 7a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                </svg>
+                                Date: {{ trip[1] }}
+                            </p>
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     {% if session['ID'] %}
@@ -55,7 +67,7 @@
                                     <button type="submit" class="btn btn-sm btn-primary disabled">Select</button>
                                     {% endif %}
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">{{ trip[9] }}$/pers</small>
                             </div>
                         </div>
                     </div>
