@@ -9,8 +9,6 @@ trip = Blueprint('trip', __name__, template_folder=templates_dir)
 
 @trip.route('/createtrip', methods=(['POST']))
 def createtrip():
-    print('createtrip')
-
     conn = get_db()
     cur = conn.cursor()
 
@@ -22,6 +20,15 @@ def createtrip():
     stopover = request.form['stopover']
     price = request.form['price']
 
+    if request.form['stopover'] == "yes":
+        stopover = 1
+    elif request.form['stopover'] == "no":
+        stopover = 0
+    elif request.form['stopover'] == "other":
+        stopover = 2
+
+
+    #id = id du user de la session
 
 
     command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', NULL, NULL, {});".format(date, departure, destination, distance, capacity, stopover, price)

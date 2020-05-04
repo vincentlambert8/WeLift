@@ -8,7 +8,7 @@
 
 <h2>Search for a lift</h2>
 
-<form>
+<form action="/searchlift" method="POST">
     <label for="departure">Departure:</label><br>
     <input type="text" id="departure" name="departure" ><br><br>
 
@@ -16,24 +16,35 @@
     <input type="text" id="destination" name="destination" ><br><br>
 
     <label for="date">Date:</label><br>
-    <input type="datetime" id="date" name="date" ><br><br>
+    <input type="date" id="date" name="date" ><br><br>
 
     <label for="numberOfPassengers">Number of passengers:</label><br>
     <input type="number" id="numberOfPassengers" name="numberOfPassengers" ><br><br>
 
-    <label for="priceRange">Price range:</label><br><br>
 
-    <label for="minPrice">Minimum:</label><br>
-    <input type="number" id="minPrice" name="minPrice" ><br>
-    <label for="maxPrice">Maximum:</label><br>
-    <input type="number" id="maxPrice" name="maxPrice" ><br><br>
+    <label for="maxPrice">Maximum Price:</label><br>
+    <input type="number" min="0" id="maxPrice" name="maxPrice" ><br><br>
 
 
     <br><br><br>
 
-    <input type="submit" value="Create trip">
+    <button type="submit">Search</button>
 
 </form> 
+
+{% for trajet in trajets %}
+<div style="border: 1px solid;">
+    <tr>
+        <td> {{trajet[0]}} </td>
+        <td> {{trajet[1]}} </td>
+        <td> {{trajet[2]}} </td>
+        <td> {{trajet[3]}} </td>
+        <td> {{trajet[4]}} </td>
+        <td> <form action="/paymentTrip"><button >Book this trip</button></form></td>
+    </tr>
+
+</div>
+{%endfor%}
 
 
 </body>
