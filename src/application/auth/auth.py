@@ -9,8 +9,6 @@ auth = Blueprint('auth', __name__, template_folder=templates_dir)
 
 @auth.route('/register', methods=(['POST']))
 def register_auth():
-
-
     conn = get_db()
     cur = conn.cursor()
 
@@ -43,7 +41,7 @@ def register_auth():
         session['ID'] = id[0]
         cur.close()
         conn.close()
-        return redirect('home')
+        return redirect('index')
 
 
 
@@ -73,7 +71,7 @@ def login_auth():
     conn.close()
 
     if(auth == True):
-        return redirect('home')
+        return redirect('index')
     else:
         return render_template('login.html')
 

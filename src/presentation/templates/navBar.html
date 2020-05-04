@@ -1,12 +1,26 @@
 <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navBar_style.css') }}"/>
 </head>
-<div id="navBar">
-    <a href="home">
+<div>
+
+    <a>
         <img width="200px" src="{{ url_for('static', filename='images/logo1.png') }}"/>
     </a>
-    <a href="logout">
-        Logout
-    </a>
+    {% if session['ID'] %}
+        <a href="logout">
+            Logout
+        </a>
+        <a href="users">
+            Profile
+        </a>
+    {% else %}
+        <a href="login">
+            login
+        </a>
+        <a href="register">
+            register
+        </a>
+    {% endif %}
 
 </div>

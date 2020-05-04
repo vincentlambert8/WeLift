@@ -11,6 +11,6 @@ app.register_blueprint(auth)
 app.register_blueprint(trip)
  
 if __name__ == '__main__':
-    app.secret_key = "0123jcyoukvince!"
+    app.secret_key = "_0123jcyoukvince!"
     app.run(debug=True)
     

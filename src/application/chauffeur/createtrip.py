@@ -9,7 +9,6 @@ trip = Blueprint('trip', __name__, template_folder=templates_dir)
 
 @trip.route('/createtrip', methods=(['POST']))
 def createtrip():
-
     print('createtrip')
 
     conn = get_db()
@@ -22,13 +21,12 @@ def createtrip():
     capacity = request.form['capacity']
     stopover = request.form['stopover']
     price = request.form['price']
-    #id = id du user de la session
+
 
 
     command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', NULL, NULL, {});".format(date, departure, destination, distance, capacity, stopover, price)
     cur.execute(command)
     conn.commit()
-    #session['user_id'] = 
     cur.close()
     conn.close()
     return redirect('choosecar')
