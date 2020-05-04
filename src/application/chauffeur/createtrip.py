@@ -27,8 +27,6 @@ def createtrip():
     elif request.form['stopover'] == "other":
         stopover = 2
 
-    print(date)
-
     command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', NULL, '{}', '{}', NULL, '{}', NULL)".format(date, departure, destination, distance, stopover, session['ID'], price)
     cur.execute(command)
     tripId = conn.insert_id()

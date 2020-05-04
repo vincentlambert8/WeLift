@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, redirect, session
+from flask import render_template, request, Blueprint, redirect, session, url_for
 import os
 import pymysql, pymysql.cursors
 import yaml
@@ -28,4 +28,4 @@ def choosecar(id):
     conn.commit()
     cur.close()
     conn.close()
-    return redirect('pickupinfo')
+    return redirect(url_for('pickupinfo'))

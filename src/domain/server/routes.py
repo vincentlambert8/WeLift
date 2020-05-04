@@ -13,7 +13,7 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 def home():
     conn = get_db()
     cur = conn.cursor()
-    command = "SELECT * FROM trips ORDER BY date"
+    command = "SELECT * FROM trips WHERE seats_available != 0 ORDER BY date"
     cur.execute(command)
     trips = cur.fetchall()
     return render_template('home.html', trips=trips[:18])

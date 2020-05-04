@@ -37,10 +37,10 @@ def searchlift():
 
     if request.form['numberOfPassengers'] != "":
         numberOfPassengers = request.form['numberOfPassengers']
-        numberOfPassengersQuery = " T.capacity >= '{}' AND".format(numberOfPassengers)
+        numberOfPassengersQuery = " T.seats_available >= '{}' AND".format(numberOfPassengers)
     else: 
         numberOfPassengers = 1
-        numberOfPassengersQuery = " T.capacity >= 1 AND"
+        numberOfPassengersQuery = " T.seats_available >= 1 AND"
 
 
     if request.form['maxPrice'] != "":

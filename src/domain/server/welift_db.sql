@@ -20,5 +20,7 @@ CREATE TABLE Historique(id int AUTO_INCREMENT, id_trips int, primary key (id), f
 
 CREATE TABLE Transactions(id int AUTO_INCREMENT, id_transmitter int, id_recipient int, amount float, date timestamp, primary key (id));
 
-CREATE TABLE Comments(id int AUTO_INCREMENT, message varchar(300), score float, id_passenger int, id_driver int, primary key (id));
+CREATE TABLE Comments(id int AUTO_INCREMENT, message varchar(300), score int, id_passenger int, id_driver int, primary key (id));
 CREATE INDEX idIndex USING HASH ON Comments(id_driver);
+INSERT INTO Comments (id, message, score, id_passenger, id_driver) VALUES (NULL, 'Mon criss', 5, 3, 1);
+INSERT INTO Comments (id, message, score, id_passenger, id_driver) VALUES (NULL, 'Mon beau', 1, 2, 1);
