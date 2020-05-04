@@ -12,9 +12,9 @@ CREATE TABLE Users(id int AUTO_INCREMENT, email varchar(254) NOT NULL, password 
 CREATE INDEX emailIndex USING HASH ON Users(email);
 INSERT INTO Users VALUES (NULL, "jeecee@artemis.com", "jeecee", "jee", "cee", 'Male', "1999-02-23", "Canada", "123-456-7890", 250);
 
-CREATE TABLE Trips(id int AUTO_INCREMENT, date timestamp NOT NULL, departure varchar(50) NOT NULL, destination varchar(50) NOT NULL, distance float, capacity integer NOT NULL, stopover integer, id_driver int, id_passengers varchar(2592), primary key (id), foreign key (id_driver) references Users(id));
+CREATE TABLE Trips(id int AUTO_INCREMENT, date timestamp NOT NULL, departure varchar(50) NOT NULL, destination varchar(50) NOT NULL, distance float, capacity integer NOT NULL, stopover integer, id_driver int, id_passengers varchar(2592), price float, license varchar(25), primary key (id), foreign key (id_driver) references Users(id), foreign key (license) references Cars(license));
 CREATE INDEX tripIndex USING HASH ON Trips(departure, destination);
-INSERT INTO Trips VALUES (NULL, "2020-05-01 13:10:11", "Québec", "St-Tite", NULL, 4, 1, NULL, NULL); 
+INSERT INTO Trips VALUES (NULL, "2020-05-01 13:10:11", "Québec", "St-Tite", NULL, 4, 1, NULL, NULL, 50.50, NULL);
 
 CREATE TABLE Cars(license varchar(25), brand varchar(25), model varchar(25), year integer, color varchar(25), primary key (license));
 INSERT INTO Cars VALUES("Y26 FXE", "Honda", "Civic", "2006", "grey");

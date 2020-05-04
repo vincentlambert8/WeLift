@@ -71,10 +71,10 @@ def createtrip():
         return redirect('home')
 
 
-@router.route('/choosecar')
-def choosecar():
+@router.route('/choosecar/<id>')
+def choosecar(id):
     if(session.get('ID', None) is not None):
-        return render_template('choosecar.html')
+        return render_template('choosecar.html', id=id)
     else:
         return redirect('home')
 
