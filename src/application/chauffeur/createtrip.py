@@ -17,7 +17,6 @@ def createtrip():
     destination = unidecode.unidecode(request.form['destination']).lower()
     date = request.form['date']
     distance = request.form['distance']
-    capacity = request.form['capacity']
     stopover = request.form['stopover']
     price = request.form['price']
 
@@ -28,9 +27,9 @@ def createtrip():
     elif request.form['stopover'] == "other":
         stopover = 2
 
+    print(date)
 
-
-    command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', '{}', NULL, '{}', NULL)".format(date, departure, destination, distance, capacity, stopover, session['ID'], price)
+    command = "INSERT INTO trips VALUES (NULL, '{}', '{}', '{}', '{}', NULL, '{}', '{}', NULL, '{}', NULL)".format(date, departure, destination, distance, stopover, session['ID'], price)
     cur.execute(command)
     tripId = conn.insert_id()
     conn.commit()

@@ -15,13 +15,14 @@ def choosecar(id):
     license = request.form['license']
     brand = request.form['brand']
     model = request.form['model']
+    capacity = request.form['capacity']
     year = request.form['year']
     color = request.form['color']
 
-    command = "INSERT INTO cars VALUES ('{}', '{}', '{}', '{}', '{}');".format(license, brand, model, year, color)
+    command = "INSERT INTO cars VALUES ('{}', '{}', '{}', '{}', '{}', '{}');".format(license, brand, model, capacity, year, color)
     cur.execute(command)
 
-    command = "UPDATE trips SET license = '{}' WHERE id = '{}'".format(license, id)
+    command = "UPDATE trips T SET T.license = '{}', T.seats_available = '{}' WHERE T.id = '{}'".format(license, capacity, id)
     cur.execute(command)
 
     conn.commit()
