@@ -11,7 +11,12 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 @router.route('/home')
 @router.route('/')
 def home():
-    return render_template('home.html')
+    conn = get_db()
+    cur = conn.cursor()
+    command = "SELECT * FROM trips ORDER BY date"
+    cur.execute(command)
+    trips = cur.fetchall()
+    return render_template('home.html', trips=trips)
 
 
 @router.route('/login')
