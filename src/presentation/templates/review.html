@@ -16,6 +16,15 @@
 </section>
 
 <div class="py-5 bg-light">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="alert-info alert" style="width: 50%; margin: auto; margin-bottom: 20px;">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
     <div class="col-md-8 order-md-2 container" style="width: 60%">
         <form action="/review/ {{ trip[0] }}" method="POST">
                 <div class="mb-4">

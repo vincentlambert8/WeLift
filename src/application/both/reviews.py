@@ -28,6 +28,7 @@ def review(id):
 
             cur.close()
             conn.close()
+            flash("Your review was submit")
             return redirect('../users')
 
         else:
