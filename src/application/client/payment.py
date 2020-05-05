@@ -33,7 +33,8 @@ def payment(id):
         cur.execute(commandCar)
         car = cur.fetchone()
 
-
+        cur.close()
+        conn.close()
         return render_template('paymentTrip.html', currentTrip=currentTrip, reviews=reviews, driver=driver, car=car)
     else:
         return redirect('home')

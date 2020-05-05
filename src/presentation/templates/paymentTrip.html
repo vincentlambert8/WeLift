@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Confirm Trip</title>
+    <title>Checkout</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
 </head>
 <body>
@@ -9,22 +9,16 @@
 
 <section class="my-5 jumbotron text-center" style="background-color: white; height: 300px">
     <div class="pt-5 container">
-        <h1 class="jumbotron-heading" style="font-weight: 300">Confirm trip.</h1>
-        <p class="lead text-muted">Reviews the trip's informations before payment.</p>
+        <h1 class="jumbotron-heading" style="font-weight: 300">Checkout.</h1>
+        <p class="lead text-muted">Reviews the lift's informations before payment.</p>
     </div>
 </section>
 
 <div class="py-5 bg-light">
     <div class="card mb-4 container" style="width: 60%">
         <div class="card-body text-center">
-            <h2 class="display-4">Trip's informations</h2>
+            <h2 class="display-4">Lift's information</h2>
             <div class="px-5 py-3 card-text">
-                <p class="my-4 h5">
-                    <svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>
-                    </svg>
-                    Driver: <span class="mx-3">{{ driver[0] }} {{ driver[1] }}</span>
-                </p>
                 <p class="my-4 h5">
                     <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
@@ -87,10 +81,10 @@
     </div>
 </div>
 
-<div class="py-5 bg-light">
+<div class="py-3 bg-light">
     <div class="card mb-4 container" style="width: 60%">
         <div class="card-body text-center">
-            <h2 class="display-4">Car's informations</h2>
+            <h2 class="display-4">Car's information</h2>
             <div class="px-5 py-3 card-text">
                 <p class="my-4 h5">
                     <svg class="bi bi-card-checklist" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -137,6 +131,53 @@
         </div>
     </div>
 </div>
+
+<div class="py-3 bg-light">
+    <div class="card mb-4 container" style="width: 60%">
+        <div class="card-body text-center">
+            <h2 class="display-4">Driver's information</h2>
+            <div class="px-5 py-3 card-text">
+                <p class="my-4 h5">
+                    <svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Driver: <span class="mx-3">{{ driver[0] }} {{ driver[1] }}</span>
+                </p>
+                <p class="my-4 h5">
+                    Reviews
+                </p>
+                {% for review in reviews %}
+                <div class="container justify-content-between">
+                    <div style="border-top: 1px solid gray; width: 70%;  margin: auto; padding: 0px 15px">
+                        {{ review[1] }}
+                        <small class="text-muted">{{ review[2] }}/5</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-5 pb-5 bg-light">
+    <div class="container" style="width: 100%">
+        <div style="margin-bottom: 50px; margin-left: 80%">
+            <form action="/confirmtrip/{{currentTrip[0]}}">
+                <button type="submit" class="btn btn-primary my-2" style="width: 300px">
+                    <svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14 5H2v9a1 1 0 001 1h10a1 1 0 001-1V5zM1 4v10a2 2 0 002 2h10a2 2 0 002-2V4H1z" clip-rule="evenodd"/>
+                        <path d="M8 1.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z"/>
+                    </svg>
+                    Proceed
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2020 WeLift</p>
+</footer>
 
 </body>
 </html>
