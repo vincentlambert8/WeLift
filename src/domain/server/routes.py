@@ -58,7 +58,7 @@ def createtrip():
         return redirect('home')
 
 
-@router.route('/choosecar/<id>')
+@router.route('/choosecar/<int:id>')
 def choosecar(id):
     if(session.get('ID', None) is not None):
         return render_template('choosecar.html', id=id)
