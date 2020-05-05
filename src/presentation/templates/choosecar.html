@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Choose your car</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
 </head>
 
 <body>
@@ -16,8 +17,33 @@
 
 <div class="py-5 bg-light">
     <div class="col-md-8 order-md-2 container" style="width: 60%">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="alert-warning alert">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <h4 class="mb-3">Car's information</h4>
-        <form action="/choosecar/{{ id }}" method="POST">
+        <div class="row">
+        {% for car in userCars %}
+            <div class="col-md-4" style="z-index: 5;">
+                <div class="card mb-3 p-3 box-shadow" style="text-align: center">
+                    <h6>License: {{car [0] }}</h6>
+                    <h6>Brand: {{ car[2] }}</h6>
+                    <h6>Model: {{ car[3] }}</h6>
+                    <h6>Color: {{ car[6] }}</h6>
+                    <form action="/choosecar/{{ id }}/{{ id_driver }}/{{ car[0] }}" method="POST" class="mt-3">
+                        <button type="submit" class="btn btn-light btn-outline-dark">Choose</button>
+                    </form>
+                </div>
+            </div>
+
+        {% endfor %}
+        </div>
+        <form action="/choosecar/{{ id }}/{{ id_driver }}" method="POST">
 
             <div class="mb-3">
                 <label for="license">License plate</label>
