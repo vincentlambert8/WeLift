@@ -63,14 +63,6 @@ def choosecar(id):
 
 #-------------------------------------------------------------------------------------------------------------
 
-@router.route('/pickupinfo')
-def pickupinfo():
-    if(session.get('ID', None) is not None):
-        return render_template('pickupinfo.html')
-    else:
-        return redirect('home')
-
-
 @router.route('/review')
 def review():
     if(session.get('ID', None) is not None):
