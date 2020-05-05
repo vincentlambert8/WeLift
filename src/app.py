@@ -5,6 +5,7 @@ from application.chauffeur.createtrip import trip
 from application.chauffeur.choosecar import car
 from application.client.searchlift import search
 from application.client.payment import chooseTrip
+from application.client.fillAccount import fill
 from application.both.users import user
 from application.chauffeur.confirmtrip import confirmation
 import os
@@ -17,6 +18,7 @@ app.register_blueprint(trip)
 app.register_blueprint(car)
 app.register_blueprint(search)
 app.register_blueprint(chooseTrip)
+app.register_blueprint(fill)
 app.register_blueprint(user)
 app.register_blueprint(confirmation)
 

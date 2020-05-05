@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a trip</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+</head>
+<body>
+{% include 'navBar.html' %}
+<section class="my-5 jumbotron text-center" style="background-color: transparent; height: 400px">
+    <div class="pt-5 container justify-content-center">
+
+        <h1 class="jumbotron-heading display-4" style="font-weight: 300">Account</h1>
+        <p class="lead text-muted">You can deposit fund to your account to pay your trips.</p>
+    </div>
+</section>
+<div class="bg-light justify-content-center h-50">
+    <div class="container justify-content-center pt-4">
+        <h1 style="text-align: center;" class="pb-3">Balance: <span style="font-style: italic" class="bg-white">{{ amount }}</span> $</h1>
+        <form class="w-50" style="margin: auto" action="/fillAccount/{{ id }}" method="post">
+            <input type="number" style="margin:auto; display: inline" id="amount" name="amount" step="0.01" class="form-control w-75">
+            <button type="submit" style="display: inline; margin-top: -5px" class="btn btn-success">Deposit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -4,6 +4,8 @@ import pymysql, pymysql.cursors
 import yaml
 from domain.server.connection_db import get_db
 
+
+
 templates_dir = os.path.abspath('presentation/templates')
 auth = Blueprint('auth', __name__, template_folder=templates_dir)
 
@@ -55,6 +57,7 @@ def login_auth():
     email = request.form['email']
     password = request.form['password']
 
+    print(email)
 
     userLoginValidation = "SELECT * FROM users U WHERE U.email = '{}' AND U.password = MD5('{}')".format(email, password)
     responseLoginValidation = cur.execute(userLoginValidation)
