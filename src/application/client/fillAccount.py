@@ -11,6 +11,7 @@ fill = Blueprint('fill', __name__, template_folder=templates_dir)
 @fill.route('/fillAccount/<id>', methods=['GET', 'POST'])
 def fillAccount(id):
     if(session.get('ID', None) is not None):
+        userId = session.get('ID', None)
         conn = get_db()
         cur = conn.cursor()
         commandUserMoney = "SELECT balance FROM users WHERE id = {}".format(id)
@@ -28,6 +29,11 @@ def fillAccount(id):
             commandUpdateMoney = "UPDATE users U SET U.balance = '{}' WHERE U.id = '{}'".format(amountTotal, id)
             cur.execute(commandUpdateMoney)
             conn.commit()
+
+            commandWriteTransaction = "INSERT INTO Transactions VALUES (NULL, '{}', '{}', '{}', '{}')".format(userId, userId, amount, date.today())
+            cur.execute(commandWriteTransaction)
+            cur.commit()
+
             cur.close()
             conn.close()
             return render_template('fillAccount.html', amount=amountTotal, id=id)
