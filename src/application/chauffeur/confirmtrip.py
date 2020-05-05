@@ -49,7 +49,7 @@ def confirmtrip(id):
 
                 updatedSeats = currentTrip[5] - 1
                 if(currentTrip[8] == None):
-                    newPassenger = str(userId) + "/"
+                    newPassenger = "/" + str(userId)
                 else:
                     newPassenger = currentTrip[8] + "/" + str(userId)
                 commandSetTrip = "UPDATE trips T SET T.seats_available = '{}', T.id_passengers = '{}' WHERE T.id = '{}'".format(updatedSeats, newPassenger, id)
