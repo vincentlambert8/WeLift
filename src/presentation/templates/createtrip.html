@@ -9,6 +9,15 @@
 <h2>Create your trip</h2>
 
 <form action="/createtrip" method="POST">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="alert-warning alert">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
     <label for="departure">Departure:</label><br>
     <input type="text" id="departure" name="departure" ><br><br>
 
@@ -26,7 +35,7 @@
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="stopover" value="no">
     <label for="no">No</label><br>
-    <input type="radio" id="other" name="stopover" value="other">
+    <input type="radio" id="other" name="stopover" value="other" checked>
     <label for="other">Maybe</label>
     <br><br>
 

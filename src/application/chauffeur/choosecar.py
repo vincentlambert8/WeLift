@@ -28,4 +28,4 @@ def choosecar(id):
     conn.commit()
     cur.close()
     conn.close()
-    return redirect('pickupinfo')
+    return redirect('../pickupinfo')
