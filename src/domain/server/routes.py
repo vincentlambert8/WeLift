@@ -65,9 +65,13 @@ def choosecar(id):
         cur.execute(commandGetDriverId)
         id_driver = cur.fetchone()[0]
 
+        commandGetCarForThisDriver = "SELECT * FROM cars WHERE id_driver = {}".format(id_driver)
+        cur.execute(commandGetCarForThisDriver)
+        userCars = cur.fetchall()
+
         cur.close()
         conn.close()
-        return render_template('choosecar.html', id=id, id_driver=id_driver)
+        return render_template('choosecar.html', id=id, id_driver=id_driver, userCars=userCars)
     else:
         return redirect('home')
 
