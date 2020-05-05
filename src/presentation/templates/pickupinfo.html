@@ -13,15 +13,6 @@
     </div>
 </section>
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class="alert-warning alert" style="width: 50%; margin: auto; margin-bottom: 20px;">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
 <div class="py-5 bg-light">
     <div class="card mb-4 container" style="width: 60%">
         <div class="card-body text-center">
@@ -186,6 +177,10 @@
         </div>
     </div>
 </div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2020 WeLift</p>
+</footer>
 
 </body>
 </html>
