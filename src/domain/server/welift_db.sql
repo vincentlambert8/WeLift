@@ -32,9 +32,9 @@ CREATE INDEX idIndex USING HASH ON Comments(id_driver);
 
 
 
-INSERT INTO Users VALUES (NULL, 'lamby@ulaval.ca', MD5('12345'), 'Vincent', 'Lambert', 'Male', '1998-01-01', '(418) 507-0000', 'Canada', 50);
-INSERT INTO Users VALUES (NULL, 'yuk@ulaval.ca', MD5('12345'), 'Yuxuan', 'Zhao', 'Male', '1998-01-01', '(418) 507-0000', 'Canada', 50);
-INSERT INTO Users VALUES (NULL, 'jc@ulaval.ca', MD5('12345'), 'JC', 'Drouin', 'Male', '1998-01-01', '(418) 507-0000', 'Canada', 50);
+INSERT INTO Users VALUES (NULL, 'lamby@ulaval.ca', MD5('12345'), 'Vincent', 'Lambert', 'Male', '1998-01-01', 'Canada', '(418) 507-0000', 50);
+INSERT INTO Users VALUES (NULL, 'yuk@ulaval.ca', MD5('12345'), 'Yuxuan', 'Zhao', 'Male', '1998-01-01', 'Canada', '(418) 507-0000', 50);
+INSERT INTO Users VALUES (NULL, 'jc@ulaval.ca', MD5('12345'), 'JC', 'Drouin', 'Male', '1998-01-01', 'Canada', '(418) 507-0000', 50);
 
 
 

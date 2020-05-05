@@ -6,6 +6,7 @@
 </head>
 <body>
 {% include 'navBar.html' %}
+
 <section class="my-5 jumbotron text-center" style="background-color: transparent; height: 400px">
     <div class="pt-5 container justify-content-center">
 
@@ -13,6 +14,17 @@
         <p class="lead text-muted">You can deposit fund to your account to pay your trips.</p>
     </div>
 </section>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="alert-warning alert" style="width: 50%; margin: auto; margin-bottom: 20px;">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 <div class="bg-light justify-content-center h-50">
     <div class="container justify-content-center pt-4">
         <h1 style="text-align: center;" class="pb-3">Balance: <span style="font-style: italic" class="bg-white">{{ amount }}</span> $</h1>

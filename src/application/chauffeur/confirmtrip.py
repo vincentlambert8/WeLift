@@ -54,7 +54,7 @@ def confirmtrip(id):
 
                     commandWriteTransaction = "INSERT INTO Transactions VALUES (NULL, '{}', '{}', '{}', '{}')".format(userId, currentTrip[7], currentTrip[9], date.today())
                     cur.execute(commandWriteTransaction)
-                    cur.commit()
+                    conn.commit()
 
                     updatedSeats = currentTrip[5] - 1
                     if(currentTrip[8] == None):
