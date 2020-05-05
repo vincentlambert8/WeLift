@@ -19,7 +19,7 @@ def createtrip():
     distance = request.form['distance']
 
     if(distance == ""):
-        distance = None
+        distance = 0
 
     print(distance)
     stopover = request.form['stopover']

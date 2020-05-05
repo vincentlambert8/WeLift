@@ -7,8 +7,8 @@ from domain.server.connection_db import get_db
 templates_dir = os.path.abspath('presentation/templates')
 car = Blueprint('car', __name__, template_folder=templates_dir)
 
-@car.route('/choosecar/<id>', methods=(['POST']))
-def choosecar(id):
+@car.route('/choosecar/<id>/<driverId>', methods=(['POST']))
+def choosecar(id, driverId):
     conn = get_db()
     cur = conn.cursor()
 
@@ -19,7 +19,8 @@ def choosecar(id):
     year = request.form['year']
     color = request.form['color']
 
-    commandSetCar = "INSERT INTO cars VALUES ('{}', '{}', '{}', '{}', '{}', '{}');".format(license, brand, model, capacity, year, color)
+
+    commandSetCar = "INSERT INTO cars VALUES ('{}', {}, '{}', '{}', '{}', '{}', '{}');".format(license, driverId, brand, model, capacity, year, color)
     cur.execute(commandSetCar)
     conn.commit()
 
@@ -29,4 +30,4 @@ def choosecar(id):
 
     cur.close()
     conn.close()
-    return redirect("../pickupinfo/{}".format(id))
+    return redirect("../../pickupinfo/{}".format(id))
