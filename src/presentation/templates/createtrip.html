@@ -2,53 +2,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Create a trip</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
 </head>
 <body>
 {% include 'navBar.html' %}
 
-<h2>Create your trip</h2>
+<section class="my-5 jumbotron text-center" style="background-color: white; height: 300px">
+    <div class="pt-5 container">
+        <h1 class="jumbotron-heading" style="font-weight: 300">Create.</h1>
+        <p class="lead text-muted">Fill the form below with your lift's information.</p>
+    </div>
+</section>
 
-<form action="/createtrip" method="POST">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class="alert-warning alert">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    <label for="departure">Departure:</label><br>
-    <input type="text" id="departure" name="departure" ><br><br>
-
-    <label for="destination">Destination:</label><br>
-    <input type="text" id="destination" name="destination" ><br><br>
-
-    <label for="date">Date:</label><br>
-    <input type="text" placeholder="YYYY-MM-JJ HH:MM:SS" id="date" name="date" ><br><br>
-
-    <label for="distance">Distance km (optional):</label><br>
-    <input type="number" id="distance" name="distance" ><br><br>
-
-    <p>Will there be stopovers?</p>
-    <input type="radio" id="yes" name="stopover" value="yes">
-    <label for="yes">Yes</label><br>
-    <input type="radio" id="no" name="stopover" value="no">
-    <label for="no">No</label><br>
-    <input type="radio" id="other" name="stopover" value="other" checked>
-    <label for="other">Maybe</label>
-    <br><br>
-
-    <label for="price">Price:</label><br>
-    <input type="number" id="price" name="price" step="0.01"><br>
-
-    <br><br><br>
+<div class="py-5 bg-light">
+<div class="col-md-8 order-md-2 container" style="width: 60%">
+    <h4 class="mb-3">Lift's information</h4>
+    <form action="/createtrip" method="POST">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="alert-warning alert">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
 
 
-    <button type="submit">Create a trip</button>
+        <div class="mb-3">
+            <label for="departure">Departure</label>
+            <input type="text" id="departure" name="departure" class="form-control">
+        </div>
 
-</form> 
+        <div class="mb-3">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" name="destination" class="form-control">
+        </div>
 
+        <div class="mb-3">
+            <label for="date">Date and Hours</label>
+            <input type="text" placeholder="YYYY-MM-JJ HH:MM:SS" id="date" name="date" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="distance">Distance</label>
+            <input type="number" id="distance" name="distance" class="form-control">
+        </div>
+
+        <p>Will there be stopovers?</p>
+        <input type="radio" id="yes" name="stopover" value="yes">
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="stopover" value="no">
+        <label for="no">No</label><br>
+        <input type="radio" id="other" name="stopover" value="other" checked>
+        <label for="other">Maybe</label>
+        <br><br>
+
+        <div class="mb-3">
+            <label for="price">Price</label>
+            <input type="number" id="price" name="price" step="0.01" class="form-control">
+        </div>
+
+        <div class="py-5 pb-5 bg-light">
+            <div class="container" style="width: 100%">
+                <div style="margin-bottom: 50px; margin-left: 80%">
+                        <button type="submit" class="btn btn-primary my-2" style="width: 300px">
+                            <svg class="bi bi-chevron-double-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                            </svg>
+                            Continue
+                        </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2020 WeLift</p>
+</footer>
 
 </body>
 </html>
