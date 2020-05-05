@@ -19,6 +19,7 @@ def confirmtrip(id):
         currentTrip = cur.fetchone()
 
         if(currentTrip[5] == 0):
+            flash("An error occured")
             cur.close()
             conn.close()
             return redirect('../home')
@@ -30,9 +31,10 @@ def confirmtrip(id):
             newUserBalance = userBalance[0] - currentTrip[9]
 
             if(newUserBalance < 0):
+                flash("Please add some fund to your account")
                 cur.close()
                 conn.close()
-                return redirect('../home')
+                return redirect('../paymentTrip/{}'.format(id))
 
             else:
                 commandSetUserBalance = "UPDATE users U SET U.balance = '{}' WHERE id = '{}'".format(newUserBalance, userId)

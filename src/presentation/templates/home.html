@@ -25,8 +25,17 @@
                 {% endif %}
             </p>
         </div>
+        <div id="earth"></div>
     </section>
-
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="alert-warning alert" style="width: 50%; margin: auto; margin-bottom: 20px;">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
     <div class="py-5 bg-light" style="z-index: 2;">
         <div class="container" style="z-index: 3;">
             <div class="row" style="z-index: 4;">
