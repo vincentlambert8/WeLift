@@ -18,7 +18,16 @@ CREATE TABLE Cars(license varchar(25), id_driver int, brand varchar(25), model v
 CREATE TABLE Trips(id int AUTO_INCREMENT, date timestamp DEFAULT CURRENT_TIMESTAMP, departure varchar(50) NOT NULL, destination varchar(50) NOT NULL, distance float, seats_available integer, stopover integer, id_driver int, id_passengers varchar(2592), price float, license varchar(25), primary key (id), foreign key (license) references Cars(license));
 CREATE INDEX tripIndex USING HASH ON Trips(departure, destination);
 
-CREATE TABLE Historique(id int AUTO_INCREMENT, id_trips int, primary key (id), foreign key (id) references Users(id));
+CREATE TABLE Images(destination varchar(50) NOT NULL, imagePath varchar(50));
+INSERT INTO Images VALUES ('default', '../../static/images/welift.jpg');
+INSERT INTO Images VALUES ('gaspesie', '../../static/images/gaspesie.jpg');
+INSERT INTO Images VALUES ('gatineau', '../../static/images/gatineau.jpg');
+INSERT INTO Images VALUES ('montreal', '../../static/images/montreal.jpg');
+INSERT INTO Images VALUES ('riviere-du-loup', '../../static/images/riviere-du-loup.jpg');
+INSERT INTO Images VALUES ('st-tite', '../../static/images/st-tite.jpg');
+INSERT INTO Images VALUES ('trois-riviere', '../../static/images/trois-rivieres.jpg');
+
+
 
 CREATE TABLE Transactions(id int AUTO_INCREMENT, id_transmitter int, id_recipient int, amount float, date timestamp, primary key (id));
 
