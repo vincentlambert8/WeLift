@@ -31,7 +31,6 @@ CREATE TABLE Comments(id int AUTO_INCREMENT, message varchar(300), score int, id
 CREATE INDEX idIndex USING HASH ON Comments(id_driver);
 
 
-
 INSERT INTO Users VALUES (NULL, 'lamby@ulaval.ca', MD5('lamby'), 'Vincent', 'Lambert', 'Male', '1998-01-01', 'Québec', '(418) 507-0000', 150);
 INSERT INTO Users VALUES (NULL, 'yuk@ulaval.ca', MD5('yuk'), 'Yuxuan', 'Zhao', 'Male', '1998-01-01', 'Québec', '(418) 507-0000', 250);
 INSERT INTO Users VALUES (NULL, 'jean@ulaval.ca', MD5('jean'), 'JC', 'Drouin', 'Male', '1998-01-01', 'Québec', '(418) 507-0421', 50);
@@ -58,6 +57,7 @@ INSERT INTO Trips VALUES (NULL, "2020-05-05 08:00:00", 'Saguenay', 'Quebec', 150
 INSERT INTO Trips VALUES (NULL, "2020-06-20 08:00:00", 'Montréal', 'Saguenay', 300, 3, 0, 10, "/1/5/3", 120, "BBB BBB" );
 INSERT INTO Trips VALUES (NULL, "2020-07-10 08:00:00", 'Saguenay', 'Quebec', 150, 6, 1, 8, "/1/2/3/5", 30, "CCC CCC" );
 INSERT INTO Trips VALUES (NULL, "2020-05-14 08:00:00", 'St-Tite', 'Trois-Rivières', 200, 2, 2, 9, "/2/3", 150, "DDD DDD" );
+
 
 
 
