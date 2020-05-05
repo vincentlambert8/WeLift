@@ -66,14 +66,6 @@ def choosecar(id):
         return redirect('home')
 
 
-@router.route('/confirmtrip')
-def confirmtrip():
-    if(session.get('ID', None) is not None):
-        return render_template('confirmtrip.html')
-    else:
-        return redirect('home')
-
-
 #-------------------------------------------------------------------------------------------------------------
 
 @router.route('/pickupinfo')
