@@ -1,1 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+</head>
+
+<body>
 {% include 'navBar.html' %}
+
+<section class="my-5 jumbotron text-center" style="background-color: white; height: 300px">
+    <div class="pt-5 container">
+        <h1 class="jumbotron-heading" style="font-weight: 300">Review.</h1>
+        <p class="lead text-muted">You can submit a review of your experience. This comments will appear in the driver's review.</p>
+    </div>
+</section>
+
+<div class="py-5 bg-light">
+    <div class="col-md-8 order-md-2 container" style="width: 60%">
+        <form action="/review/ {{ trip[0] }}" method="POST">
+                <div class="mb-4">
+                    <label for="rating">Rating</label>
+                    <input type="number" id="rating" name="rating" class="form-control" min="1" max="5" step="1">
+                </div>
+                <div class="mb-4">
+                    <label for="message">Comments</label>
+                    <textarea id="message" name="message" class="form-control" rows="5" maxlength="100" placeholder="Type here..."></textarea>
+                </div>
+            <div style=" margin-left: 80%">
+                <button type="submit" class="btn btn-primary my-2" style="width: 300px">
+                    <svg class="bi bi-chevron-double-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    </svg>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2020 WeLift</p>
+</footer>
+
+</body>
+
+<style>
+    #rating::-webkit-outer-spin-button,
+    #rating::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    #rating[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+    }
+    #rating{width: 50px}
+</style>
+
+</html>

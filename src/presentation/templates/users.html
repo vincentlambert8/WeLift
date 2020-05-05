@@ -161,8 +161,11 @@
                         </svg>
                         Date: {{ trip[1] }}
                     </h3>
-                    <form action="/confirmtrip/{{ trip[0] }}" method="GET" style="display: inline;" class="mb-3 pb-2">
+                    <form action="/confirmtrip/{{ trip[0] }}" method="GET" style="display: inline;" class="mb-3 mr-3 pb-2">
                         <button type="submit" class="btn btn-light btn-outline-dark">More info</button>
+                    </form>
+                    <form action="/review/{{ trip[0] }}" method="GET" style="display: inline;" class="mb-3 pb-2">
+                        <button type="submit" class="btn btn-light btn-outline-dark">Review</button>
                     </form>
                 </div>
                 {% endfor %}
@@ -171,6 +174,11 @@
 
         {% endif %}
     </div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2020 WeLift</p>
+</footer>
+
 
 </body>
 </html>

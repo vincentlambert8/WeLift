@@ -14,11 +14,11 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 def home():
     conn = get_db()
     cur = conn.cursor()
-    command = "SELECT * FROM trips WHERE seats_available != 0 AND date > NOW() ORDER BY date"
+    command = "SELECT * FROM trips WHERE seats_available != 0 AND date > NOW() ORDER BY date LIMIT 18"
     cur.execute(command)
     trips = cur.fetchall()
 
-    return render_template('home.html', trips=trips[:18])
+    return render_template('home.html', trips=trips)
 
 
 @router.route('/login')
@@ -73,14 +73,6 @@ def choosecar(id):
 
 
 #-------------------------------------------------------------------------------------------------------------
-
-@router.route('/review')
-def review():
-    if(session.get('ID', None) is not None):
-        return render_template('review.html')
-    else:
-        return redirect('home')
-
 
 @router.route('/logout')
 def logout():
