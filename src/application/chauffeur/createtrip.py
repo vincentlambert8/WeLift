@@ -42,6 +42,7 @@ def createtrip():
         cur.execute(command)
         tripId = conn.insert_id()
         conn.commit()
+
     cur.close()
     conn.close()
     return redirect("choosecar/{}".format(tripId))

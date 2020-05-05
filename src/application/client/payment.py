@@ -23,7 +23,17 @@ def payment(id):
         cur.execute(commandDriverReviews)
         reviews = cur.fetchall()
 
+        commandDriverName = "SELECT first_name, last_name FROM users WHERE id = {}".format(currentTrip[7])
 
-        return render_template('paymentTrip.html', currentTrip=currentTrip, reviews=reviews)
+        cur.execute(commandDriverName)
+        driver = cur.fetchone()
+
+        commandCar = "SELECT * FROM Cars WHERE license = '{}'".format(currentTrip[10])
+
+        cur.execute(commandCar)
+        car = cur.fetchone()
+
+
+        return render_template('paymentTrip.html', currentTrip=currentTrip, reviews=reviews, driver=driver, car=car)
     else:
         return redirect('home')
