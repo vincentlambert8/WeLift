@@ -29,7 +29,7 @@ def users():
 
             tripAsDriver = cur.fetchall()
 
-            commandTripAsPassenger = "SELECT * FROM trips WHERE id_passengers LIKE %'/{}'%".format(user_id)
+            commandTripAsPassenger = "SELECT * FROM trips WHERE id_passengers LIKE '%/{}%'".format(user_id)
             cur.execute(commandTripAsPassenger)
             conn.commit()
 
