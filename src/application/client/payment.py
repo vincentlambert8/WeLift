@@ -37,4 +37,4 @@ def payment(id):
         conn.close()
         return render_template('paymentTrip.html', currentTrip=currentTrip, reviews=reviews, driver=driver, car=car)
     else:
-        return redirect('home')
+        return redirect('../home')

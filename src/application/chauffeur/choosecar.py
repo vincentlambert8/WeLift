@@ -19,13 +19,14 @@ def choosecar(id):
     year = request.form['year']
     color = request.form['color']
 
-    command = "INSERT INTO cars VALUES ('{}', '{}', '{}', '{}', '{}', '{}');".format(license, brand, model, capacity, year, color)
-    cur.execute(command)
-
-    command = "UPDATE trips T SET T.license = '{}', T.seats_available = '{}' WHERE T.id = '{}'".format(license, capacity, id)
-    cur.execute(command)
-
+    commandSetCar = "INSERT INTO cars VALUES ('{}', '{}', '{}', '{}', '{}', '{}');".format(license, brand, model, capacity, year, color)
+    cur.execute(commandSetCar)
     conn.commit()
+
+    commandSetTrip = "UPDATE trips T SET T.license = '{}', T.seats_available = '{}' WHERE T.id = '{}'".format(license, capacity, id)
+    cur.execute(commandSetTrip)
+    conn.commit()
+
     cur.close()
     conn.close()
-    return redirect('../pickupinfo')
+    return redirect("../pickupinfo/{}".format(id))

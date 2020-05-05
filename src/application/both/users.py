@@ -20,20 +20,16 @@ def users():
             cur = conn.cursor()
             command = "SELECT * FROM users WHERE id = {}".format(user_id)
             cur.execute(command)
-            conn.commit()
             user = cur.fetchone()
 
             commandTripAsDriver = "SELECT * FROM trips WHERE id_driver = {}".format(user_id)
             cur.execute(commandTripAsDriver)
-            conn.commit()
-
             tripAsDriver = cur.fetchall()
 
             commandTripAsPassenger = "SELECT * FROM trips WHERE id_passengers LIKE '%/{}%'".format(user_id)
             cur.execute(commandTripAsPassenger)
-            conn.commit()
-
             tripAsPassenger = cur.fetchall()
+
             return render_template('users.html', user=user, tripAsDriver=tripAsDriver, tripAsPassenger=tripAsPassenger)
     else:
         return redirect('home', user=user, )

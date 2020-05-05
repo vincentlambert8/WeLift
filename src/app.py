@@ -7,6 +7,7 @@ from application.client.searchlift import search
 from application.client.payment import chooseTrip
 from application.both.users import user
 from application.chauffeur.confirmtrip import confirmation
+from application.both.pickupinfo import pickup
 import os
 import bcrypt
 
@@ -19,6 +20,7 @@ app.register_blueprint(search)
 app.register_blueprint(chooseTrip)
 app.register_blueprint(user)
 app.register_blueprint(confirmation)
+app.register_blueprint(pickup)
 
 if __name__ == '__main__':
     app.secret_key = "_0123jcyoukvince!"
