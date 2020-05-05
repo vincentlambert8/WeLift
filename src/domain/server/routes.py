@@ -14,7 +14,7 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 def home():
     conn = get_db()
     cur = conn.cursor()
-    command = "SELECT * FROM trips WHERE seats_available != 0 ORDER BY date"
+    command = "SELECT * FROM trips WHERE seats_available != 0 AND date > NOW() ORDER BY date"
     cur.execute(command)
     trips = cur.fetchall()
 

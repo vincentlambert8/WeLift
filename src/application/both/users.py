@@ -32,4 +32,4 @@ def users():
 
             return render_template('users.html', user=user, tripAsDriver=tripAsDriver, tripAsPassenger=tripAsPassenger)
     else:
-        return redirect('home', user=user, )
+        return redirect('home', user=user)
