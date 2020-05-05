@@ -3,6 +3,7 @@ import os
 import pymysql, pymysql.cursors
 import yaml
 from .connection_db import get_db
+from datetime import datetime
 
 templates_dir = os.path.abspath('presentation/templates')
 router = Blueprint('router', __name__, template_folder=templates_dir)
@@ -16,6 +17,7 @@ def home():
     command = "SELECT * FROM trips WHERE seats_available != 0 AND date > NOW() ORDER BY date"
     cur.execute(command)
     trips = cur.fetchall()
+
     return render_template('home.html', trips=trips[:18])
 
 
@@ -56,7 +58,16 @@ def createtrip():
 @router.route('/choosecar/<int:id>')
 def choosecar(id):
     if(session.get('ID', None) is not None):
-        return render_template('choosecar.html', id=id)
+        conn = get_db()
+        cur = conn.cursor()
+
+        commandGetDriverId = "SELECT id_driver FROM trips WHERE id = {}".format(id)
+        cur.execute(commandGetDriverId)
+        id_driver = cur.fetchone()[0]
+
+        cur.close()
+        conn.close()
+        return render_template('choosecar.html', id=id, id_driver=id_driver)
     else:
         return redirect('home')
 
