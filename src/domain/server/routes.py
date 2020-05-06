@@ -14,11 +14,20 @@ router = Blueprint('router', __name__, template_folder=templates_dir)
 def home():
     conn = get_db()
     cur = conn.cursor()
-    command = "SELECT * FROM trips WHERE seats_available != 0 AND date > NOW() ORDER BY date LIMIT 18"
+    command = "SELECT * FROM trips t WHERE t.seats_available != 0 AND t.date > NOW() ORDER BY t.date LIMIT 18"
     cur.execute(command)
     trips = cur.fetchall()
-
-    return render_template('home.html', trips=trips)
+    imagePath = []
+    for i,trip in enumerate(trips):
+        CommandeGetPicture = "SELECT i.picture FROM destination_pictures i WHERE i.destination = '{}'".format(trip[3])
+        nb = cur.execute(CommandeGetPicture)
+        if(nb == 0):
+            imagePath.append('../../static/images/welift.jpg')
+        else:
+            imagePath.append(cur.fetchone()[0])
+    cur.close()
+    conn.close()
+    return render_template('home.html', trips=trips, imagePath=imagePath)
 
 
 @router.route('/login')

@@ -47,6 +47,7 @@ INSERT INTO Destination_pictures VALUES ('montreal', '../../static/images/montre
 INSERT INTO Destination_pictures VALUES ('riviere-du-loup', '../../static/images/riviere-du-loup.jpg');
 INSERT INTO Destination_pictures VALUES ('st-tite', '../../static/images/st-tite.jpg');
 INSERT INTO Destination_pictures VALUES ('trois-riviere', '../../static/images/trois-rivieres.jpg');
+INSERT INTO Destination_pictures VALUES ('quebec', '../../static/images/quebec.jpg');
 
 
 DELIMITER //
