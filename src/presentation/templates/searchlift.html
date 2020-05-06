@@ -62,7 +62,7 @@
                     <div class="col-md-4" style="z-index: 5;">
                         <div class="card mb-4 box-shadow">
                             {% set img = "../../static/images/%s.jpg" | format(trip[3]) %}
-                            <img class="card-img-top" src={{img}} onerror="this.src='../../static/images/welift.jpg'" style="max-height: 10em" alt={{ trip[3] }}>
+                            <img class="card-img-top" src={{ imagePath[loop.index-1] }} style="max-height: 10em" alt={{ trip[3] }}>
                             <div class="card-body">
                                 <p class="card-text">
                                 <p>

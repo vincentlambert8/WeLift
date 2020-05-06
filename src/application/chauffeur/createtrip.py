@@ -13,8 +13,8 @@ def createtrip():
     conn = get_db()
     cur = conn.cursor()
 
-    departure = unidecode.unidecode(request.form['departure']).lower()
-    destination = unidecode.unidecode(request.form['destination']).lower()
+    departure = request.form['departure']
+    destination = request.form['destination']
     date = request.form['date']
     distance = request.form['distance']
 

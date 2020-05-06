@@ -59,9 +59,18 @@ def searchlift():
             cur.execute(command)
             trajets = cur.fetchall()
 
+
+        imagePath = []
+        for i, trip in enumerate(trajets):
+            CommandeGetPicture = "SELECT i.picture FROM destination_pictures i WHERE i.destination = '{}'".format(trip[3])
+            nb = cur.execute(CommandeGetPicture)
+            if(nb == 0):
+                imagePath.append('../../static/images/welift.jpg')
+            else:
+                imagePath.append(cur.fetchone()[0])
         cur.close()
         conn.close()
-        return render_template("searchlift.html",trajets=trajets)
+        return render_template("searchlift.html",trajets=trajets, imagePath=imagePath)
 
     else:
         return redirect('../home')
