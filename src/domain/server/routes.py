@@ -45,14 +45,6 @@ def register():
 
 #------------------------------------------------------------------------------------------------------------
 
-@router.route('/searchlift')
-def searchlift():
-    if(session.get('ID', None) is not None):
-        return render_template('searchlift.html')
-    else:
-        return redirect('home')
-
-
 
 #------------------------------------------------------------------------------------------------------------
 

@@ -3,6 +3,7 @@ import os
 import pymysql, pymysql.cursors
 import yaml
 from domain.server.connection_db import get_db
+from datetime import date
 
 templates_dir = os.path.abspath('presentation/templates')
 confirmation = Blueprint('confirmation', __name__, template_folder=templates_dir)
@@ -49,6 +50,10 @@ def confirmtrip(id):
                     newDriverBalance = currentTrip[9] + driverBalance[0]
                     commandSetDriverBalance = "UPDATE users U SET U.balance = '{}' WHERE id = '{}'".format(newDriverBalance, currentTrip[7])
                     cur.execute(commandSetDriverBalance)
+                    conn.commit()
+
+                    commandWriteTransaction = "INSERT INTO Transactions VALUES (NULL, '{}', '{}', '{}', '{}')".format(userId, currentTrip[7], currentTrip[9], date.today())
+                    cur.execute(commandWriteTransaction)
                     conn.commit()
 
                     updatedSeats = currentTrip[5] - 1
