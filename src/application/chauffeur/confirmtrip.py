@@ -8,6 +8,7 @@ from datetime import date
 templates_dir = os.path.abspath('presentation/templates')
 confirmation = Blueprint('confirmation', __name__, template_folder=templates_dir)
 
+
 @confirmation.route('/confirmtrip/<id>', methods=['GET', 'POST'])
 def confirmtrip(id):
     userId = session.get('ID', None)
