@@ -7,7 +7,6 @@ from domain.server.connection_db import get_db
 templates_dir = os.path.abspath('presentation/templates')
 user = Blueprint('user', __name__, template_folder=templates_dir)
 
-
 @user.route('/users')
 def users():
     if(session.get('ID', None) is not None):
